@@ -19,15 +19,17 @@ alert(table.join(' '))
 // квадрат яких не перевищує числа N.
 const integerNumberOfUser = Number(prompt('Enter number-limiter :'))
 const arrIntegers = []
-if (integerNumberOfUser > 0) {
-    for (let t = 0; t <= 100; t++) {
-        if (t*t < integerNumberOfUser) {
+if (Number.isInteger(integerNumberOfUser) && integerNumberOfUser > 0) {
+    for (let t = 1; t <= 100; t++) {
+        if (t*t <= integerNumberOfUser) {
             arrIntegers.push(t)
         }
     }
     alert(arrIntegers.join(' '))
 }
-else {
+else if(integerNumberOfUser === 0){
+    alert(`0 it doesnt have such numbers`)
+}else{
     alert(`Number is invalid`)
 }
 /************************************************************/
@@ -35,7 +37,7 @@ else {
 // більше 1, які не мають інших дільників крім 1 і себе).
 const numberToCheck = Number(prompt('Is your number a Prime number ? :'))
 let massages
-if (numberToCheck > 1) {
+if (Number.isInteger(numberToCheck) && numberToCheck > 2) {
     for (let a = 2; a < numberToCheck; a++) {
         if ((numberToCheck % a) === 0) {
             massages = "It is not Prime number"
@@ -46,7 +48,9 @@ if (numberToCheck > 1) {
     }
     alert(`${numberToCheck} : ${massages} `)
 }
-else {
+else if(numberToCheck === 2){
+    alert("It is Prime number")
+}else{
     alert(`Number is invalid`)
 }
 /***************************************************************/
@@ -54,20 +58,19 @@ else {
 // шляхом зведення числа 3 у деякий ступінь.
 // (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).
 const numberToChecked = Number(prompt('Enter a number to be checked :'))
-if (numberToChecked > 1) {
-    let answer
-    let exponentiation = 0
-    for (let b = 1; b <= numberToChecked; b++) {
-        if (numberToChecked % (3 ** b) === 0) {
-            answer = 'Yes'
-            exponentiation++
+if (Number.isInteger(numberToChecked) && numberToChecked > 1) {
+    let exponentiation = ''
+    let finalText = ''
+    for (exponentiation = 1; exponentiation <= numberToChecked; exponentiation++) {
+        if (numberToChecked === (3 ** exponentiation)) {
+            finalText = `Yes , it exponentiation is : ${exponentiation}`
             break
         } else {
-            answer = 'No'
+            finalText = `No , its not possible`
         }
     }
-    alert(`${answer}, it exponentiation is : ${exponentiation}`)
+    alert(`${finalText}`)
 }
 else {
-    alert(`Number is invalid`)
+    alert(`No , its not possible`)
 }
