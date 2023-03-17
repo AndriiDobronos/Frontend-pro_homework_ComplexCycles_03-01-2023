@@ -59,9 +59,8 @@ else if(numberToCheck === 2){
 // (Наприклад, числа 9, 81 можна отримати, а 13 - не можна).
 const numberToChecked = Number(prompt('Enter a number to be checked :'))
 if (Number.isInteger(numberToChecked) && numberToChecked > 1) {
-    let exponentiation = ''
     let finalText = ''
-    for (exponentiation = 1; exponentiation <= numberToChecked; exponentiation++) {
+    for (let exponentiation = 1; exponentiation <= numberToChecked; exponentiation++) {
         if (numberToChecked === (3 ** exponentiation)) {
             finalText = `Yes , it exponentiation is : ${exponentiation}`
             break
